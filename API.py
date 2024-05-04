@@ -1,9 +1,8 @@
 from googleapiclient import discovery
-from request import *
 import json
 
 
-class google_api_client(object):
+class Google_api_client(object):
     def __init__(self,api_key):
         #Establish connection to Perpective API
         client = discovery.build(
@@ -15,10 +14,12 @@ class google_api_client(object):
         )
         self.client = client
     
-    def analyze_request(self, data):
-        request = format_request(data)
-        response = self.client.comments().analyze(body=request).execute()
+    
+    def analyze_request(self, request):
+        req = request
+        response = self.client.comments().analyze(body=req).execute()
         str_response = json.dumps(response,indent=2)
         return str_response
+    
      
 
