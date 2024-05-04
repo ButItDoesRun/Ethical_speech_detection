@@ -6,7 +6,16 @@ class Request(object):
         self.insult = insult
         self.profanity = profanity
         self.threat = threat
-
+        self.check_input()
+    
+    #Raises a TypeError if class attributes are not type bool  
+    def check_input(self):
+        attrs_list = self.__dict__.items()
+        for attr in attrs_list:
+            if not type(attr[1]) is bool:
+                raise TypeError("parameter: '"+attr[0]+"' from Request, must be a bool, not "+str(type(attr[1])))
+        
+    #Formats requested attributes
     def format_req_att(self,comment):
         request_object = {
             'comment': { 
