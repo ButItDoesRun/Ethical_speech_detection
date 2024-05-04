@@ -19,15 +19,15 @@ file.close()
 request = Request.__new__(Request)
 request.__init__(
     toxicity=True,
-    severe_toxicity=False,
+    severe_toxicity=True,
     identity_attack=False,
     insult=False, 
     profanity=False, 
-    threat=False
+    threat=True
     )
 
-#format request attributes
-formatted_req = request.format_req_att(data)
+#format request attributes and set a threshold range(0,1) 
+formatted_req = request.format_req_att(comment=data, threshold=0.3)
 #print(str(formatted_req))
 
 #Analyze data

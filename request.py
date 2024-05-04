@@ -16,19 +16,19 @@ class Request(object):
                 raise TypeError("parameter: '"+attr[0]+"' from Request, must be a bool, not "+str(type(attr[1])))
         
     #Formats requested attributes
-    def format_req_att(self,comment):
+    def format_req_att(self,comment, threshold):
         request_object = {
             'comment': { 
                 'text': comment, 
                 'type':'PLAIN_TEXT' 
             },
              'requestedAttributes': {
-                 'TOXICITY':{},
-                 'SEVERE_TOXICITY': {},
-                 'IDENTITY_ATTACK': {},
-                 'INSULT': {},
-                 'PROFANITY': {},
-                 'THREAT': {}
+                 'TOXICITY':{'scoreThreshold':threshold},
+                 'SEVERE_TOXICITY': {'scoreThreshold':threshold},
+                 'IDENTITY_ATTACK': {'scoreThreshold':threshold},
+                 'INSULT': {'scoreThreshold':threshold},
+                 'PROFANITY': {'scoreThreshold':threshold},
+                 'THREAT': {'scoreThreshold':threshold}
              }
         }
      
