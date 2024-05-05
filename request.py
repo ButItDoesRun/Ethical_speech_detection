@@ -1,3 +1,6 @@
+from Response import *
+#import json
+
 class Request(object):
     def __init__(self,toxicity, severe_toxicity, identity_attack, insult,profanity,threat):
         self.toxicity = toxicity
@@ -51,6 +54,37 @@ class Request(object):
             del request_object['requestedAttributes']['THREAT']
             
         return request_object
+    
+    #Executes the comment_analyzer for one request
+    def execute_request(self, client, comment,threshold):
+        #Format request and set a threshold [range(0,1)] 
+        formatted_req = self.format_req_att(comment=comment, threshold=threshold)
+        #print(str(formatted_req))
+        
+        #Analyze data
+        rep = client.analyze_request(formatted_req)
+
+        #Create Response 
+        response = Response.__new__(Response)
+        response.__init__(comment = comment, response = rep)
+
+        #Get score
+        response.get_score_from_response()
+
+        #print score
+        print("comment: "+response.comment)
+        print("score: "+str(response.score_list))
+
+        #show all data from response:
+        #using response class:
+        #print(response.response)
+
+        #using the direct API response 
+        #str_response = json.dumps(response,indent=2)
+        #print(str_response)
+
+ 
+
 
 
 

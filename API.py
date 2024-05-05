@@ -1,6 +1,4 @@
 from googleapiclient import discovery
-import json
-
 
 class Google_api_client(object):
     def __init__(self,api_key):
@@ -13,13 +11,20 @@ class Google_api_client(object):
         static_discovery=False,
         )
         self.client = client
-    
-    
+
+    #analyse_request method
+    def analyze_request(self, request):
+        req = request
+        response = self.client.comments().analyze(body=req).execute()
+        #returns a Python object
+        return response
+    '''
+    #analyse_request method
     def analyze_request(self, request):
         req = request
         response = self.client.comments().analyze(body=req).execute()
         str_response = json.dumps(response,indent=2)
         return str_response
-    
+    '''
      
 

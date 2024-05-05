@@ -1,5 +1,6 @@
 from API import *
 from Request import *
+from Response import *
 
 #Get API Key locally to keep it hidden (security reasons)
 file = open('../YourAPIKey.txt', 'r')
@@ -14,28 +15,22 @@ client.__init__(API_KEY)
 file = open('comments.txt', 'r')
 data = file.read()
 file.close()
+data_list = list(data.split(";")) 
 
-#create new request
-request = Request.__new__(Request)
-request.__init__(
-    toxicity=True,
-    severe_toxicity=True,
-    identity_attack=False,
-    insult=False, 
-    profanity=False, 
-    threat=True
+for comment in data_list:
+    #Create new request
+    request = Request.__new__(Request)
+    request.__init__(
+        toxicity=True,
+        severe_toxicity=True,
+        identity_attack=False,
+        insult=False, 
+        profanity=False, 
+        threat=False
     )
 
-#format request attributes and set a threshold range(0,1) 
-formatted_req = request.format_req_att(comment=data, threshold=0.3)
-#print(str(formatted_req))
-
-#Analyze data
-response = client.analyze_request(formatted_req)
-
-#Print response in terminal
-print(response)
-
+    request.execute_request(client,comment,threshold=0.3)
+    
 
 
 
