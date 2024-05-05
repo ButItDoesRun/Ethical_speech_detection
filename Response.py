@@ -18,6 +18,6 @@ class Response(object):
                             score_list[attr] = score
 
         if hasScore == False:
-            raise Exception("No score available within given score threshold. Try another threshold or attribute")
+            print("No score available for this comment within given score threshold. Try another threshold or attribute")
         
         self.score_list = score_list
