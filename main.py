@@ -11,7 +11,7 @@ file.close()
 client = Google_api_client.__new__(Google_api_client)
 client.__init__(API_KEY)
 
-#Provide data
+#Get data
 file = open('comments.txt', 'r')
 data = file.read()
 file.close()
@@ -29,6 +29,7 @@ for comment in data_list:
         threat=False
     )
 
+    #Execute request
     request.execute_request(client,comment,threshold=0.3)
     
 

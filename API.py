@@ -18,13 +18,5 @@ class Google_api_client(object):
         response = self.client.comments().analyze(body=req).execute()
         #returns a Python object
         return response
-    '''
-    #analyse_request method
-    def analyze_request(self, request):
-        req = request
-        response = self.client.comments().analyze(body=req).execute()
-        str_response = json.dumps(response,indent=2)
-        return str_response
-    '''
-     
+
 
