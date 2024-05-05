@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\juvel\OneDrive\Documents\RUC\CS-Final_Semester\Code\Ethical_speech_detection\.venv
+set VIRTUAL_ENV=C:\MyJupyterNotebooks\ThesisProject\Ethical_speech_detection\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

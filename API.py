@@ -1,12 +1,17 @@
 from googleapiclient import discovery
 
 class Google_api_client(object):
-    def __init__(self,api_key):
+    def __init__(self):
+        #Get API Key locally to keep it hidden (security reasons)
+        file = open('../YourAPIKey.txt', 'r')
+        self.api_key = file.read()
+        file.close()
+
         #Establish connection to Perpective API
         client = discovery.build(
         "commentanalyzer",
         "v1alpha1",
-        developerKey=api_key,
+        developerKey=self.api_key,
         discoveryServiceUrl="https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1",
         static_discovery=False,
         )
