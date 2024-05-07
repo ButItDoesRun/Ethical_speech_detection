@@ -29,8 +29,7 @@ class Request(object):
         rep = client.analyze_request(formatted_req)
 
         #Create Response 
-        response = Response.__new__(Response)
-        response.__init__(comment = comment, response = rep)
+        response = Response(comment = comment, response = rep)
 
         #Get score
         response.get_score_from_response()
