@@ -1,3 +1,7 @@
+import os
+import numpy as np
+import pandas as pd
+
 from API import *
 from Request import *
 from Response import *
