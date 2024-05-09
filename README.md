@@ -29,3 +29,7 @@ Prerequisite: an API key generated from your Google Cloud Console
 NOTE: if you get an error about updating the pip version then use the below command to resolve it:
 --> python.exe -m pip install –-upgrade pip
 
+Dependencies:
+numpy
+pandas
+
