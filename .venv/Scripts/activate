@@ -39,10 +39,10 @@ deactivate nondestructive
 if [ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
-    export VIRTUAL_ENV=$(cygpath "C:\MyJupyterNotebooks\ThesisProject\Ethical_speech_detection\.venv")
+    export VIRTUAL_ENV=$(cygpath "C:\MyJupyterNotebooks\ThesisProject\ModerationModel\.venv")
 else
     # use the path as-is
-    export VIRTUAL_ENV="C:\MyJupyterNotebooks\ThesisProject\Ethical_speech_detection\.venv"
+    export VIRTUAL_ENV="C:\MyJupyterNotebooks\ThesisProject\ModerationModel\.venv"
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"
