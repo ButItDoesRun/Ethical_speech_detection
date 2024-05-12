@@ -26,18 +26,24 @@ class Request(object):
         formatted_req = self.format_req_att(comment=comment, threshold=threshold)
         
         #Analyze data
-        rep = client.analyze_request(formatted_req)
+        try:
+            response_data = client.analyze_request(formatted_req)
+        except Exception as error:
+            response_data = {}
+            print("An error occurred:", error)
 
         #Create Response 
-        response = Response(comment = comment, response = rep)
+        response = Response(comment = comment, response = response_data)
 
         #Get score
         response.get_score_from_response()
 
         #print score
-        print("comment: "+response.comment)
-        print("score: "+str(response.score_list))
+        # print("comment: "+response.comment)
+        # print("score: "+str(response.score_list))
 
+        return response.score_list
+    
         #show all data from response:
         #print(response.response)
 

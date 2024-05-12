@@ -1,29 +1,19 @@
+from Functions import *
+
 class Response(object):
     def __init__(self, comment,response):
         self.comment = comment
-        self.response = response
+        self.response = response        
 
     def get_score_from_response(self):
         response = self.response
-        hasScore = False
         score_list = dict()
 
-        for attribute in response['attributeScores']:
-            hasScore = True                   
-            summary_score = response['attributeScores'][attribute]['summaryScore']            
-            score_list[attribute] = summary_score['value']
-
-        # for category in response:
-        #     if category == 'attributeScores':
-        #         hasScore = True
-        #         for attr in response[category]:
-        #             for attr_info in response[category][attr]:
-        #                 if attr_info == 'summaryScore':
-        #                     value = response[category][attr][attr_info]
-        #                     score = value['value']
-        #                     score_list[attr] = score
-
-        if hasScore == False:
-            print("No score available for this comment within given score threshold. Try another threshold or attribute")
-        
-        self.score_list = score_list
+        try:        
+            for attribute in response['attributeScores']:
+                summary_score = response['attributeScores'][attribute]['summaryScore']
+                score_list[attribute] = summary_score['value']
+        except:
+            score_list = handle_score_list_error()        
+ 
+        self.score_list = dict(sorted(score_list.items(), reverse=True))        

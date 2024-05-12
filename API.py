@@ -20,7 +20,12 @@ class Google_api_client(object):
     #analyse_request method
     def analyze_request(self, request):
         req = request
-        response = self.client.comments().analyze(body=req).execute()
+        try:
+            response = self.client.comments().analyze(body=req).execute()
+        except Exception as error:
+            response = {}
+            print("An error occurred:", error)
+
         #returns a Python object
         return response
 
