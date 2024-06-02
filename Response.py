@@ -1,7 +1,7 @@
 from Functions import *
 
 class Response(object):
-    def __init__(self, comment,response):
+    def __init__(self, comment, response):
         self.comment = comment
         self.response = response        
 
